@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const authController = require('../controllers/authController')
 
 /* Home page/index route. */
 router.get('/', function(req, res, next) {
-  res.redirect('/api/posts');
+  res.json({ message: '/api'});
 });
 
 /**** Posts Controller Routes */
@@ -13,5 +14,6 @@ router.get('/', function(req, res, next) {
 
 
 /**** Authentication Controller Routes */
+router.post("/login", authController.login)
 
 module.exports = router;
