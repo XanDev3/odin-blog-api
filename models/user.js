@@ -14,6 +14,11 @@ UserSchema.virtual("url").get(function (){
     // Arrow function not used since we'll need the this object
     return `/user/${this._id}`;
 }) */
+UserSchema.statics.isUsernameTaken = async function isUsernameTaken(username) {
+    return this.exists({ username })
+      .collation({ locale: "en", strength: 2 })
+      .exec();
+  }
 
 // Export the model
 module.exports = mongoose.model("User", UserSchema);
