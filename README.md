@@ -1,4 +1,4 @@
-# Odin Members Only
+# Odin Blog REST API
 
 ![Screenshot](./.jpg)
 
@@ -12,8 +12,8 @@ I created this project mainly to practice full-stack development with a focus on
 
 ## Features
 
-- Create, Read and edit public posts.
-- Create, Read and edit public comments on those posts.
+- CRUD operations on Blog posts.
+- Create, Read, and Delete on public comments on those posts.
 - User authentication with passport and jwt.
 - Securing passwords using bcryptjs.
 - Schema validation using Mongoose.
@@ -47,9 +47,10 @@ $ npm install
 ### Setting up environment variables
 
 - Populate `.env` located in server with the following environment variables:
-  - `PORT`: Your node server will run on this port. Default is 3001. If you want to use a different port, make sure to update it in client's `.env` file.
+  - `PORT`: Your node server will run on this port. Default is 3000. If you want to use a different port, make sure to update it in client's `.env` file.
   - `NODE_ENV`: Default is `development`.
   - `MONGODB_URI`: Update the placeholders with your running MongoDB instance's data.
+  - `JWT_SECRET`: Secret to sign and validate jwt tokens passed to clients.
   - `ADMIN_USERNAME`: The username for built-in user to enter to have management abilities for the blog.
   - `ADMIN_PASSWORD`: The password for the built-in user.
 - Update the environment variables and save the file.
