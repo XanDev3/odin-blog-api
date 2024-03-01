@@ -5,6 +5,7 @@ const allowedOrigins = [
     'http://localhost:3000',
     'https://xandernesta.github.io',
     'https://naughty-bat-spacesuit.cyclic.app',
+    'https://prairie-safe-cut.glitch.me'
 
 ];
 
