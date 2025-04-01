@@ -28,7 +28,7 @@ I created this project mainly to practice full-stack development with a focus on
 
 ```bash
 # Clone this repository
-$ git clone git@github.com:xandernesta/odin-blog-api.git
+$ git clone git@github.com:xandev3/odin-blog-api.git
 
 # Go into the repository
 $ cd odin-blog-api
@@ -74,6 +74,6 @@ $ npm run dev
 
 ## License
 
-<a href="https://github.com/xandernesta/odin-members-only/blob/main/LICENSE">
+<a href="https://github.com/xandev3/odin-members-only/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT License">
 </a>
