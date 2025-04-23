@@ -6,7 +6,7 @@
 
 **:point_right: See it live [here]()**
 
-Odin Blog Api is the backend portion of the blog project that is part of the Odin Node Course. The intention is to get an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistory and two to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
+Odin Blog Api is the backend portion of the blog project that is part of the Odin Node Course. The intention is to create an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistory and the other to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
 
 I created this project mainly to practice full-stack development with a focus on authentication, JSON Web Tokens, and connecting different front ends to a backend api.
 
@@ -28,7 +28,7 @@ I created this project mainly to practice full-stack development with a focus on
 
 ```bash
 # Clone this repository
-$ git clone git@github.com:xandev3/odin-blog-api.git
+$ git clone https://github.com/XanDev3/odin-blog-api.git
 
 # Go into the repository
 $ cd odin-blog-api
