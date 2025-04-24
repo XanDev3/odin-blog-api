@@ -1,0 +1,116 @@
+# Deep Dive Reminder
+
+This document summarizes the steps taken and knowledge gathered during our analysis of the blog API project. It serves as a reminder in case of any interruptions or the need to revisit the project.
+
+**I. Initial Project Information:**
+
+*   **Project Type:** Express.js API for a blog.
+*   **Data Persistence:** MongoDB with Mongoose.
+*   **Authentication:** JWT (JSON Web Tokens).
+*   **User Roles:** Two roles:
+    *   Readers (public access).
+    *   Editors/Admins (full CRUD access).
+*   **Clients:** Two separate client repositories:
+    *   `odin-blog-read-client` (for readers).
+    *   `odin-blog-edit-client` (for editors/admins).
+*   **User Management:** Handled within `authController.js`.
+*   **Goal:** Improve the API with better visualization using Swagger and potentially implement basic rate limiting.
+*   **swagger.md:** A new file named `swagger.md` to hold the Swagger documentation.
+* **No userController:** There is no user controller, all actions for users are done within `authController.js`
+
+**II. Deep Dive - Initial Steps:**
+
+*   **Request:** User requested a deep dive into the repository as an expert API developer.
+*   **Expertise:** Focus on TypeScript, JavaScript, Express.js, JWT, MongoDB, and Mongoose.
+*   **Research:** Conducted research on all relevant technologies.
+*   **Goal:** Gain a thorough understanding of the project without making immediate changes.
+*   **Plan:**
+    *   Analyze file structure.
+    *   Identify dependencies.
+    *   Understand core logic and functionality.
+    *   Map API endpoints.
+    *   Trace data flow.
+    *   Investigate error handling.
+    *   Assess security considerations.
+*   **Clarifying Questions:** Asked initial clarifying questions about specific areas of focus, testing, and performance.
+
+**III. Deep Dive - Refined Approach:**
+
+*   **New Information:** Provided links to client repositories and clarified user roles/permissions.
+*   **Adjusted Focus:**
+    *   Prioritized authentication/authorization logic in `authController.js`.
+    *   Focused on CRUD operations in `postController.js` and `commentController.js`.
+    *   Analyzed data relationships in Mongoose models.
+    *   Considered client interactions.
+*   **Swagger Integration:** Began researching Swagger implementation with Express.js, including `swagger-jsdoc` and `swagger-ui-express`.
+*   **Clarifying Questions:** Asked further questions about specific admin endpoints, rate limiting, error responses, protected paths, admin role definition, documentation location, and naming conventions.
+
+**IV. Deep Dive - Detailed Findings:**
+
+*   **File Structure:** Well-organized, with logical separation of concerns (controllers, models, routes, config).
+*   **Dependencies:**
+    *   `Express.js`
+    *   `Mongoose`
+    *   `jsonwebtoken`
+    * `cookie-parser`
+    *   `cors`
+    *   `dotenv`
+    * `bcrypt`
+*   **Core Logic:**
+    *   `app.js`: Sets up Express.js, uses middleware, defines routes, handles errors.
+    *   `routes/`: `index.js` (basic route), `api.js` (API routes).
+    *   `controllers/`: `authController.js` (user auth), `postController.js` (post CRUD), `commentController.js` (comment CRUD).
+    *   `models/`: `user.js` (user schema), `post.js` (post schema), `comment.js` (comment schema).
+    * `config/`: `allowedOrigins.js` (allowed origins), `corsOptions.js` (cors options).
+    * `bin/www`: starts the server.
+* **Security:**
+    * JWT is being used.
+    * Passwords are being hashed using bcrypt.
+    * Cors is setup.
+*   **API Endpoints:**
+    *   `/auth/register` (public)
+    *   `/auth/login` (public)
+    *   `/auth/logout` (protected)
+    *   `/api/posts` (GET: public, POST: protected)
+    *   `/api/posts/:id` (GET: public, PUT/DELETE: protected)
+    *   `/api/posts/:id/comments` (GET: public, POST: protected)
+    *   `/api/posts/:id/comments/:commentId` (GET: public, PUT/DELETE: protected)
+*   **Data Flow:** Standard Express.js pattern (routes -> controllers -> models -> database).
+*   **Error Handling:** Try/catch blocks in controllers, custom error-handling middleware.
+* **Environment:**
+    * The config files are being used and setup correctly.
+*   **Rate Limiting Research:**
+    *   Identified `express-rate-limit` as a suitable library.
+    *   Determined implementation would be relatively easy.
+    *   Best placement would be after the `cors` middleware and before the routes.
+*   **Swagger Progress:**
+    *   Started `swagger.md` file.
+    * Began documenting endpoints and schemas.
+    * Working title for the swagger document is `API Documentation` or `Odin Blog API Documentation`.
+*   **Clarifying Questions:**
+    *   **Admin Endpoints:** No specific admin endpoints; admin access is based on the `isAdmin` flag.
+    *   **Rate Limiting:** Not currently implemented; `express-rate-limit` is a good option.
+    *   **Error Handling:** Controller-based error handling, to be reflected in Swagger.
+    *   **Protected Paths:** Most routes are protected by JWT.
+    *   **Admin Role:** Defined by the `isAdmin` flag in the user model.
+    * **swagger.md location:** is in the root directory.
+    * **swagger title:** Still needs to be determined.
+
+**V. Decisions Made:**
+
+*   **Swagger Documentation:** Create a `swagger.md` file in the root directory.
+*   **Rate Limiting:** Will likely use `express-rate-limit` if requested.
+*   **Swagger UI:** Will use `swagger-ui-express`.
+* **No User Controller:** There will not be a user controller.
+* **Admin:** An admin will be determined by the `isAdmin` flag on the user model.
+* **swagger.md:** The swagger documentation will be in the swagger.md file.
+* **Cors:** Cors is setup correctly.
+* **Security:** The current security measures are appropriate.
+* **Error Handling:** The current error handling is well done.
+* **Naming:** The naming in the project is appropriate.
+
+**VI. Next Steps:**
+
+* Continue to document the endpoints and schemas in the swagger.md file.
+* Wait for approval to implement rate limiting.
+* Verify the functionality of the project to determine if there are any vulnurabilites.
