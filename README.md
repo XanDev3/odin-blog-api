@@ -1,9 +1,5 @@
 # Odin Blog REST API
 
-![Screenshot](./.jpg)
-
-
-
 **:point_right: See it live [here]()**
 
 Odin Blog Api is the backend portion of the blog project that is part of the Odin Node Course. The intention is to create an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistory and the other to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
@@ -46,7 +42,7 @@ $ npm install
 
 ### Setting up environment variables
 
-- Populate `.env` located in server with the following environment variables:
+- Create a `.env` located in server similar to `.env.example` with the following environment variables:
   - `PORT`: Your node server will run on this port. Default is 3000. If you want to use a different port, make sure to update it in client's `.env` file.
   - `NODE_ENV`: Default is `development`.
   - `MONGODB_URI`: Update the placeholders with your running MongoDB instance's data.
@@ -64,6 +60,10 @@ From `odin-blog-api` directory, run the following commands:
 # Start the client - dev is a script located in package.json that will use concurrently to run (in parallel) nodemon and tailwindcss
 $ npm run dev
 ```
+## Data Diagram
+![Diagram](/public/images/DBdiagram.png)
+
+
 
 ## Technologies Used
 
