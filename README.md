@@ -78,7 +78,7 @@ This project now includes Swagger documentation to make it easier to understand 
     - The required parameters (if any).
     - The expected request body (for POST and PUT requests).
     - The possible response codes and their meanings.
-  You can try out any of these endpoints directly in the Swagger UI by clicking the "Try it out" button and then "Execute".
+  You can try out any of these endpoints directly in the Swagger UI by clicking the "Try it out" button and then "Execute". If at any point you get a { "message": "Not allowed by CORS" } response. Make sure to update `config/allowedOrigins.js` to include your dev server url i.e. `http://localhost:3000` or `https://my-server-api.dev`.
 
 - **Accessing Protected Routes:**
   Many routes in this API are protected and require a valid JWT (JSON Web Token) to access them. Here's how to obtain and use a token:
