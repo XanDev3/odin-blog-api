@@ -104,7 +104,7 @@ This project now includes Swagger documentation to make it easier to understand 
     -   Click "Authorize".
     -   Click "Close".
 4.  **Test Protected Routes:**
-    -   Now you can test any protected route.
+    -   Now you can test any protected user route (see Admin Protected Routes for more info).
     -   Expand the route you want to test.
     -   Click the "Try it out" button.
     -   Fill out any required fields.
@@ -114,7 +114,7 @@ This project now includes Swagger documentation to make it easier to understand 
 5.  **Admin Protected Routes:**
     -   Some routes are meant to be used by Admin users only.
     -   Signup will not grant `isAdmin` to the user created and this api has no functionality to create admins. This is intentional;In order to protect these operations from anyone without DB access to change the content of the live site.
-    -   If you would like to create an Admin user you will have to manually create one in your MongoDB instance. Or write the functionality to create Admins in your application.  
+    -   If you would like to create an Admin user you will have to manually create one in your MongoDB instance. Or alternatively add the functionality to create Admins in your application however you see fit.  
 
 ## Data Diagram
 ![Diagram](/public/images/DBdiagram.png)
