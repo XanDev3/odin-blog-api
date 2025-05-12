@@ -106,8 +106,8 @@ exports.comment_update = [
 exports.comment_delete = asyncHandler(async (req, res, next) => {
   try {
     const commentToDelete = await Comment.findByIdAndDelete(req.params.commentid)
-    res.status(200).json({ message: 'Successfully deleted post', commentToDelete })
+    res.status(200).json({ message: 'Successfully deleted comment', commentToDelete })
   } catch (error) {
-    res.status(500).json({ message: 'Failed to delete post' })
+    res.status(500).json({ message: 'Failed to delete comment' })
   }
 })
