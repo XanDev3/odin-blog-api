@@ -1,6 +1,6 @@
 # Odin Blog REST API
 
-**:point_right: See it live at my frontend repo [here](https://github.com/XanDev3/odin-blog-read-client)**
+**:point_right: See it live [here]()**
 
 Odin Blog Api is the backend portion of the blog project that is part of the Odin Node Course. The intention is to create an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistory and the other to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
 
@@ -46,7 +46,7 @@ $ npm install
   - `PORT`: Your node server will run on this port. Default is 3000. If you want to use a different port, make sure to update it in client's `.env` file.
   - `NODE_ENV`: Default is `development`.
   - `MONGODB_URI`: Update the placeholders with your running MongoDB instance's data.
-  - `JWT_SECRET`: Secret to sign and validate jwt tokens passed to clients. Basically like a password, it should be many characters, hard to guess and never shared or uploaded to github.
+  - `JWT_SECRET`: Secret to sign and validate jwt tokens passed to clients.
   - `ADMIN_USERNAME`: The username for built-in user to enter to have management abilities for the blog.
   - `ADMIN_PASSWORD`: The password for the built-in user.
 - Update the environment variables and save the file.
