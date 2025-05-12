@@ -1,24 +1,29 @@
 var express = require('express')
 var router = express.Router()
 const authController = require('../controllers/authController')
-const postController = require('../controllers/postController')
-const commentController = require('../controllers/commentController')
+const postController = require('../controllers/postController');
+const commentController = require('../controllers/commentController');
 const passport = require('passport')
 
-/* Home page/index route. */
-router.get('/', function (req, res, next) {
+
+router.get('/', (req, res, next) => {
   res.json({ message: '/api' })
 })
 
 /**** Posts Controller Routes */
+
 router.get('/posts', postController.posts_list)
+
 router.get('/posts/:postid', postController.post_get)
+
 router.post(
   '/posts/',
   passport.authenticate('jwt-admin', { session: false }),
   postController.post_create
 )
+
 router.put('/posts/:postid', passport.authenticate('jwt-admin', { session: false }), postController.post_update)
+
 router.delete('/posts/:postid', passport.authenticate('jwt-admin', { session: false }), postController.post_delete)
 
 /**** Comments Controller Routes */
@@ -36,9 +41,12 @@ router.put('/posts/:postid/comments/:commentid', passport.authenticate('jwt-admi
 router.delete('/posts/:postid/comments/:commentid', passport.authenticate('jwt-admin', { session: false }), commentController.comment_delete)
 
 /**** Authentication Controller Routes */
+
+router.post('/signup', authController.signup)
+
 router.post('/login', authController.login)
 router.post('/logout', authController.logout)
-router.post('/signup', authController.signup)
+
 
 /**** Protected route */
 router.get(
@@ -50,5 +58,4 @@ router.get(
       .json({ message: 'You successfully accessed the protected route' })
   }
 )
-
 module.exports = router
