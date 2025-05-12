@@ -59,7 +59,7 @@ From `odin-blog-api` directory, run the following commands:
 # Start the client - dev is a script located in package.json that will use concurrently to run (in parallel) nodemon and tailwindcss
 $ npm run dev
 ```
-Once the application is running, you can verify that it is running correctly by opening your web browser and navigating to `http://localhost:3000/`. You should see a JSON response of `{ message: '/api' }`. You can also navigate to `http://localhost:3000/api-docs` to view the swagger documentation.
+Once the application is running, you can verify that it is running correctly by opening your web browser and navigating to `http://localhost:3000/` or `http://localhost:<PORT#>` (where <PORT#> is the number specified in your .env). You should see the Express welcome page. You can also navigate to `http://localhost:3000/api-docs` to view the swagger documentation and `http://localhost:3000/api` should redirect here too.
 
 ### Swagger Documentation
 
