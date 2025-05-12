@@ -68,13 +68,20 @@ This document summarizes the steps taken and knowledge gathered during our analy
     * Passwords are being hashed using bcrypt.
     * Cors is setup.
 *   **API Endpoints:**
-    *   `/auth/register` (public)
-    *   `/auth/login` (public)
-    *   `/auth/logout` (protected)
+    *   `/api/signup` (public)
+    *   `/api/login` (public)   
+    *   `/api/logout` (public)    
     *   `/api/posts` (GET: public, POST: protected)
     *   `/api/posts/:id` (GET: public, PUT/DELETE: protected)
-    *   `/api/posts/:id/comments` (GET: public, POST: protected)
+    *   `/api/posts/:id/comments` (GET: public)
+    *   `/api/posts/:id/comments` (POST: protected)
+    *   `/api/posts/:id/comments/:commentId` (GET: public)
+    *   `/api/posts/:id/comments/:commentId` (PUT: protected)
     *   `/api/posts/:id/comments/:commentId` (GET: public, PUT/DELETE: protected)
+    *  `/api/posts/:id/comments/:commentId` (DELETE: protected)
+
+    *   `/api` (GET: public)
+    * `/` (GET: public)
 *   **Data Flow:** Standard Express.js pattern (routes -> controllers -> models -> database).
 *   **Error Handling:** Try/catch blocks in controllers, custom error-handling middleware.
 * **Environment:**
@@ -93,24 +100,27 @@ This document summarizes the steps taken and knowledge gathered during our analy
     *   **Error Handling:** Controller-based error handling, to be reflected in Swagger.
     *   **Protected Paths:** Most routes are protected by JWT.
     *   **Admin Role:** Defined by the `isAdmin` flag in the user model.
-    * **swagger.md location:** is in the root directory.
-    * **swagger title:** Still needs to be determined.
+
 
 **V. Decisions Made:**
 
-*   **Swagger Documentation:** Create a `swagger.md` file in the root directory.
-*   **Rate Limiting:** Will likely use `express-rate-limit` if requested.
 *   **Swagger UI:** Will use `swagger-ui-express`.
 * **No User Controller:** There will not be a user controller.
 * **Admin:** An admin will be determined by the `isAdmin` flag on the user model.
-* **swagger.md:** The swagger documentation will be in the swagger.md file.
 * **Cors:** Cors is setup correctly.
 * **Security:** The current security measures are appropriate.
-* **Error Handling:** The current error handling is well done.
 * **Naming:** The naming in the project is appropriate.
 
+*   **Rate Limiting:** Will likely use `express-rate-limit` if requested.
 **VI. Next Steps:**
 
+*  **Swagger Documentation Complete:** We have now fully documented all the routes in `config/swagger.js`, including:
+    *   All public routes (GET /api, GET /api/posts, GET /api/posts/:postid, GET `/api/posts/:postid/comments`, GET `/api/posts/:postid/comments/:commentid`, POST /api/signup, POST /api/login).
+    *   All admin-protected routes (POST /api/posts, PUT /api/posts/:postid, DELETE /api/posts/:postid, PUT /api/posts/:postid/comments/:commentid, DELETE /api/posts/:postid/comments/:commentid).
+    *   All user-protected routes (POST /api/posts/:postid/comments)
+    * The new logout route (POST /api/logout)
+* **User-Protected Route Identification:** We correctly identified all of the user protected routes.
+* **Swagger UI Testing Plan:** We have created a very thorough testing plan to test all of the work we have been doing.
 * Continue to document the endpoints and schemas in the swagger.md file.
 * Wait for approval to implement rate limiting.
 * Verify the functionality of the project to determine if there are any vulnurabilites.
@@ -204,9 +214,16 @@ Browser URL for accessing API: https://3001-idx-odin-blog-api-vibes-174552462071
 
 
 Prompt I just gave the AI 5/1/25:
-- Using the repo please add to your context everything in deep_dive_reminder.txt in relation to all the files and code in this repo. 
+- Using the repo please add to your own context everything in deep_dive_reminder.txt in relation to all the files and code in this repo. 
 
 - I had the last gemini model that I worked with in this firebase studio create it as a reminder of all the things we worked on and I would like you to be familiar with the steps and context as well. Y
 - You will also be an expert in Software Development. You will know all the of the technologies and packages that are found in the package.json. You also know that these packages here are installed and in use in our project. Remember these things.
+
+- Be able to look up the documentation and understand implementation of these technologies at an expert level. Be able to see how the best practices can be merged with what is in my codebase with as little changes to my codebase as possible. We need strong justification to make changes.
+
+Prompt given on 5/6/25:
+Parse through deep_dive_reminder.txt. Become extremely familiar with everything in this document so that you know what I have down previously with the help of previous versions of firebase studio AI so that you are an expert in all the areas we need in order to continue improving this repo.
+
+You will also be an expert in Software Development. You will know all the of the technologies and packages that are found in the package.json. You also know that these packages here are installed and in use in our project. Remember these things.
 
 - Be able to look up the documentation and understand implementation of these technologies at an expert level. Be able to see how the best practices can be merged with what is in my codebase with as little changes to my codebase as possible. We need strong justification to make changes.

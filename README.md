@@ -82,11 +82,39 @@ This project now includes Swagger documentation to make it easier to understand 
 
 - **Accessing Protected Routes:**
   Many routes in this API are protected and require a valid JWT (JSON Web Token) to access them. Here's how to obtain and use a token:
-<!-- Needs corrections     
-    1. **Obtain a Token:** Use the `/auth/register` or `/auth/login` endpoints in the Swagger UI to create a new user or log in as an existing one. These endpoints will return a JWT in the response.
-    2. **Authorize Swagger UI:** Click the "Authorize" button in the top right corner of the Swagger UI. Paste the obtained JWT (without the quotes) into the "Value" field and click "Authorize".
-    3. **Test Protected Routes:** Now, you can test any protected route by expanding it and clicking "Try it out" and then "Execute". For example you could try testing the `/api/posts` route. The token will be automatically included in the request headers. -->
 
+1.  **Signup a New User:**
+    -   Expand the `/api/signup` route.
+    -   Click "Try it out."
+    -   Enter a desired username and password in the appropriate fields.
+    -   Click "Execute".
+    -   If successful, the response body will contain a `Signup Successful` message property, a 'user' property and  `token` property with your JWT.
+    -   Copy that token and skip to #3. Authroize Swagger UI
+2.  **Login an Existing User (optional):**
+    - If you have already signed up you can use the `/api/login` route to obtain a new token.
+    -   Expand the `/api/login` route.
+    -   Click "Try it out."
+    -   Enter the desired username and password in the appropriate fields.
+    -   Click "Execute".
+    -   If successful, the response body will contain a `token` property with your JWT.
+3.  **Authorize Swagger UI:**
+    -   In the top right corner of the Swagger UI, click the "Authorize" button.
+    -   Find the "jwtAuth" security scheme.
+    -   In the "Value" field, paste the **entire** JWT that was returned from the `/api/signup` or `/api/login` step. Example: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1ZGY5ZmM3YjY5YmFjZDJkNTNhYzk0MiIsInVzZXJuYW1lIjoidGVzdCIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNzExODc5NjY5LCJleHAiOjE3MTE5NjYwNjl9.1w_O_jQ8m_6tKzW_Qp97i12kX5f5yvY_5T3XQ5g9Uuc`
+    -   Click "Authorize".
+    -   Click "Close".
+4.  **Test Protected Routes:**
+    -   Now you can test any protected route.
+    -   Expand the route you want to test.
+    -   Click the "Try it out" button.
+    -   Fill out any required fields.
+    -   Click "Execute".
+    -   The token will be automatically included in the request headers.
+    -   A successful response (e.g., a 201 status for creating a post) means that the protected route was accessed correctly.
+5.  **Admin Protected Routes:**
+    -   Some routes are meant to be used by Admin users only.
+    -   Signup will not grant `isAdmin` to the user created and this api has no functionality to create admins. This is intentional;In order to protect these operations from anyone without DB access to change the content of the live site.
+    -   If you would like to create an Admin user you will have to manually create one in your MongoDB instance. Or write the functionality to create Admins in your application.  
 
 ## Data Diagram
 ![Diagram](/public/images/DBdiagram.png)

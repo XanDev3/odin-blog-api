@@ -1,4 +1,4 @@
-const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerSpec = require('./config/swagger.js');
 const swaggerUi = require('swagger-ui-express');
 
 // Load .env file if server is not in production mode
@@ -163,21 +163,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/api', apiRouter)
-
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Odin Blog API Documentation',
-      version: '1.0.0',
-      description: 'API documentation for the Odin Blog application',
-    },
-  },
-  apis: ['./routes/*.js', './controllers/*.js', './models/*.js'],
-};
-const openapiSpecification = swaggerJsdoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use('/api', apiRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development

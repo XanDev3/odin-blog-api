@@ -76,6 +76,7 @@ exports.signup = [
           })
           res.json({
             message: 'Signup Successful',
+            id: body._id,
             user: body.username,
             token: token
           })
@@ -114,7 +115,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
         return res
           .status(200)
-          .json({ message: 'Login Successful', admin: body.isAdmin, user: body.username, token})
+          .json({ message: 'Login Successful', admin: body.isAdmin, id: body._id ,user: body.username, token})
       })
     })(req, res, next)
   } catch (error) {
