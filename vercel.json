@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "bin/www",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "bin/www"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "bin/www"
+    }
+  ],
+  "functions": {
+    "bin/www": {
+      "includeFiles": "node_modules/swagger-ui-dist/**"
+    }
+  }
+}
