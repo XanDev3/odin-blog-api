@@ -5,11 +5,6 @@ const postController = require('../controllers/postController');
 const commentController = require('../controllers/commentController');
 const passport = require('passport')
 
-
-router.get('/', (req, res, next) => {
-  res.json({ message: '/api' })
-})
-
 /**** Posts Controller Routes */
 
 router.get('/posts', postController.posts_list)

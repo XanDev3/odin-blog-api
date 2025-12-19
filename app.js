@@ -148,8 +148,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/api', apiRouter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api/v1', apiRouter);
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development

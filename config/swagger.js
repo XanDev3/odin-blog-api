@@ -147,28 +147,7 @@ const swaggerSpec = {
     },
 
     paths: {
-        "/api/": {
-            get: {
-                summary: "Returns a message that describes the /api endpoint",
-                tags: ["Home"],
-                responses: {
-                    200: {
-                        description: "Returns a message",
-                        content: {
-                            "application/json": {
-                                schema: {
-                                    type: "object",
-                                    example: {
-                                        message: "/api",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-        "/api/posts": {
+        "/api/v1/posts": {
             get: {
                 summary: "Get all blog posts",
                 tags: ["Posts"],
@@ -189,7 +168,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/posts/{postid}": {
+        "/api/v1/posts/{postid}": {
             get: {
                 summary: "Get a blog post by ID",
                 tags: ["Posts"],
@@ -339,7 +318,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/posts/": {
+        "/api/v1/posts/": {
             post: {
                 summary: "Create a new blog post (protected - Admin only)",
                 tags: ["Posts"],
@@ -383,7 +362,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/posts/{postid}/comments": {
+        "/api/v1/posts/{postid}/comments": {
             post: {
                 summary: "Create a new comment on a post (protected - User)",
                 tags: ["Comments"],
@@ -452,7 +431,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/posts/{postid}/comments/{commentid}": {
+        "/api/v1/posts/{postid}/comments/{commentid}": {
             get: {
                 summary: "Get a comment by ID",
                 tags: ["Comments"],
@@ -625,7 +604,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/signup": {
+        "/api/v1/signup": {
             post: {
                 summary: "User Signup",
                 description: "Creates a new user account.",
@@ -686,7 +665,7 @@ const swaggerSpec = {
                 },
             },
         },
-        "/api/login": {
+        "/api/v1/login": {
             post: {
                 summary: "User Login",
                 description: "Logs in an existing user.",
@@ -732,7 +711,7 @@ const swaggerSpec = {
                 },
             },
         },
-          "/api/logout": {
+          "/api/v1/logout": {
             post: {
                 summary: "Logout a User",
                 tags: ["Authentication"],
