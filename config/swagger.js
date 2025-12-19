@@ -7,7 +7,12 @@ const swaggerSpec = {
     servers: [
         {
             url: "/",
+            description: "Development/Testing server, will use localhost:<PORT>"
         },
+        {
+            url: "https://odin-blog-api-coral.vercel.app/",
+            description: "Live Site URL"
+        }
     ],
     components: {
         schemas: {

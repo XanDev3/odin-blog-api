@@ -122,23 +122,8 @@ passport.use(
     }
   )
 )
-/* // Session functions to allow users to stay logged in while navigating the app by creating user cookie and storing in browser (called by passport)
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
 
-passport.deserializeUser(async (id, done) => {
-    try {
-        const user = await User.findById(id);
-        done(null, user);
-    } catch(err) {
-        done(err);
-    };
-}); */
-// passport initialization
-/* app.use(session({ secret: "keyboardcats", resave: false, saveUninitialized: true })); */
 app.use(passport.initialize())
-/* app.use(passport.session()); */
 
 // view engine setup
 app.use(expressLayouts)
