@@ -43,8 +43,7 @@ connectDB()
 
 // CDN CSS for Vercel Deployement of Swagger- from https://github.com/swagger-api/swagger-ui/issues/8461#issuecomment-1669133079
 const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css";
 
 var app = express()
 
@@ -155,7 +154,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/api/v1', apiRouter);
 //Swagger/OpenAPI
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec,{ customCssUrl: CSS_URL }));
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec,{ customCssUrl: '/stylesheets/swagger-ui.css'/* CSS_URL  */}));
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
