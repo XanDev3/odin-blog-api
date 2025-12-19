@@ -41,6 +41,11 @@ const connectDB = async () => {
 }
 connectDB()
 
+// CDN CSS for Vercel Deployement of Swagger- from https://github.com/swagger-api/swagger-ui/issues/8461#issuecomment-1669133079
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
+
 var app = express()
 
 // Setup passport LocalStrategy - must be above passport.initialize()
@@ -149,7 +154,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/api/v1', apiRouter);
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+//Swagger/OpenAPI
+app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerSpec,{ customCssUrl: CSS_URL }));
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
