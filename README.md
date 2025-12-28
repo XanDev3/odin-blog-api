@@ -1,8 +1,8 @@
 # Odin Blog REST API
 
-**:point_right: See it live [here]()**
+**:point_right: See it live [here](odin-blog-api-coral.vercel.app)**
 
-Odin Blog Api is the backend portion of the blog project that is part of the Odin Node Course. The intention is to create an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistory and the other to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in admin user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
+Odin Blog Api is the backend portion of the blog project that is part of the Odin Project Node Course. The intention is to create an API for my blog site that I will be able to use 2 different front ends to access with different functionality for both (one to read the blogs like an everyday vistor and the other to post, edit, delete and other blog management functions). Anyone visiting the first site will be able to read all the blogs and comments for each post but users will have to sign up in order to write comments for the post. The second site will have a built-in admin user that can create, edit, publish, unpublish and delete posts and can also edit or delete comments.
 
 I created this project mainly to practice full-stack development with a focus on authentication, JSON Web Tokens, and connecting different front ends to a backend api.
 
@@ -59,7 +59,7 @@ From `odin-blog-api` directory, run the following commands:
 # Start the client - dev is a script located in package.json that will use concurrently to run (in parallel) nodemon and tailwindcss
 $ npm run dev
 ```
-Once the application is running, you can verify that it is running correctly by opening your web browser and navigating to `http://localhost:3000/` or `http://localhost:<PORT#>` (where <PORT#> is the number specified in your .env). You should see the Express welcome page. You can also navigate to `http://localhost:3000/api-docs` to view the swagger documentation and `http://localhost:3000/api` should redirect here too.
+Once the application is running, you can verify that it is running correctly by opening your web browser and navigating to `http://localhost:3000/` or `http://localhost:<PORT#>` (where <PORT#> is the number specified in your .env). You should see the Express welcome page. You can also navigate to `http://localhost:3000/api-docs` to view the swagger documentation.
 
 ### Swagger Documentation
 
