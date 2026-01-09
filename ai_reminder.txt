@@ -209,12 +209,12 @@ Browser URL for accessing API: https://3001-idx-odin-blog-api-vibes-174552462071
 
 **VIII. Agent Collaboration Notes**
 
-*   **Importance of this file:** This `deep_dive_reminder.txt` file is crucial for maintaining a clear record of our work. As we progress, we will make sure to keep it updated with any new findings, decisions, or changes to the codebase. It will serve as a central point of reference, ensuring that both of us are on the same page. By doing this we can better ensure we are maintaining a single source of truth for our work together.
+*   **Importance of this file:** This `ai_reminder.txt` file is crucial for maintaining a clear record of our work. As we progress, we will make sure to keep it updated with any new findings, decisions, or changes to the codebase. It will serve as a central point of reference, ensuring that both of us are on the same page. By doing this we can better ensure we are maintaining a single source of truth for our work together.
 *   **Tools Used:** I am able to use the `natural_language_write_file` tool to create and update this document, `read_file` to read the files and `list_project_files` to see all of the files. These are the tools that are being used to work with this file. I will use the `natural_language_write_file` to add to this document as we move along. If there are any changes needed to the file, I will be sure to use the `natural_language_write_file` to ensure that the changes are saved.
 
 
 Prompt I just gave the AI 5/1/25:
-- Using the repo please add to your own context everything in deep_dive_reminder.txt in relation to all the files and code in this repo. 
+- Using the repo please add to your own context everything in ai_reminder.txt in relation to all the files and code in this repo. 
 
 - I had the last gemini model that I worked with in this firebase studio create it as a reminder of all the things we worked on and I would like you to be familiar with the steps and context as well. Y
 - You will also be an expert in Software Development. You will know all the of the technologies and packages that are found in the package.json. You also know that these packages here are installed and in use in our project. Remember these things.
@@ -222,8 +222,19 @@ Prompt I just gave the AI 5/1/25:
 - Be able to look up the documentation and understand implementation of these technologies at an expert level. Be able to see how the best practices can be merged with what is in my codebase with as little changes to my codebase as possible. We need strong justification to make changes.
 
 Prompt given on 5/6/25:
-Parse through deep_dive_reminder.txt. Become extremely familiar with everything in this document so that you know what I have down previously with the help of previous versions of firebase studio AI so that you are an expert in all the areas we need in order to continue improving this repo.
+Parse through ai_reminder.txt. Become extremely familiar with everything in this document so that you know what I have down previously with the help of previous versions of firebase studio AI so that you are an expert in all the areas we need in order to continue improving this repo.
 
 You will also be an expert in Software Development. You will know all the of the technologies and packages that are found in the package.json. You also know that these packages here are installed and in use in our project. Remember these things.
 
 - Be able to look up the documentation and understand implementation of these technologies at an expert level. Be able to see how the best practices can be merged with what is in my codebase with as little changes to my codebase as possible. We need strong justification to make changes.
+
+Prompt to refactor to ts on 1/9/26 (not implemented on 1/9/26, will re-run once I add x402, just a reference/reminder for now):
+Lets make a well thought-out plan to migrate this whole repo from JS to Typescript.
+
+ai_reminder.txt is the history of working with past agents to improve and understand this repo. Please ingest ai_reminder.txt as your first bit of context for the project and then inspect the repo in it entirety for any context you may be missing. We will add to the file the results of this plan to continue to record of changes and important context about this. It is of the utmost importance that this record is pristine and helpful/usable for any future AI agents to assist me with my future improvements.
+
+git branch feat/refactor-to-typescript created
+
+No Prompt yet:
+In-progress work: x402 addition
+git branch feat/x402 created
