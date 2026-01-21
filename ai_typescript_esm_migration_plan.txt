@@ -58,18 +58,18 @@ Rename src/models/comment.js to src/models/comment.ts, convert to ES module synt
 
 ---
 
-### Phase 4: Configuration Files (Steps 13-16)
+### Phase 4: Configuration Files (Steps 13-16) ✅ COMPLETED
 
-**Step 13: Convert allowedOrigins config**
+**Step 13: Convert allowedOrigins config** ✅ COMPLETED
 Rename src/config/allowedOrigins.js to src/config/allowedOrigins.ts, type as string[], convert to ES module with named export (~3-4 changes).
 
-**Step 14: Convert corsOptions config**
+**Step 14: Convert corsOptions config** ✅ COMPLETED
 Rename src/config/corsOptions.js to src/config/corsOptions.ts, import CorsOptions type from cors, convert to ES module, add .js extension to allowedOrigins import (~5-6 changes).
 
-**Step 15: Convert swagger config**
+**Step 15: Convert swagger config** ✅ COMPLETED
 Rename src/config/swagger.js to src/config/swagger.ts, import OpenAPI types from swagger-ui-express or create inline type, convert to ES module with default export, keep 744-line spec intact (~4-5 module syntax changes only).
 
-**Step 16: Create Passport configuration module**
+**Step 16: Create Passport configuration module** ✅ COMPLETED
 Create src/config/passport.ts, extract three Passport strategies from src/app.js (LocalStrategy 'login', JwtStrategy default, JwtStrategy 'jwt-admin'), convert to ES modules with typed callbacks using Passport types, import User model with .js extension, export configurePassport(passport: typeof passportInstance) function (~35-40 lines moved and typed).
 
 ---
