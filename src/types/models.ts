@@ -12,7 +12,7 @@ export interface IUserDocument extends IUser, Document {
 }
 
 export interface IUserModel extends Model<IUserDocument> {
-  findByUsername(username: string): Promise<IUserDocument | null>;
+  isUsernameTaken(username: string): Promise<boolean>;
 }
 
 // Post Interfaces
