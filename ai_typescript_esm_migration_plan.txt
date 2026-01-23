@@ -76,11 +76,11 @@ Create src/config/passport.ts, extract three Passport strategies from src/app.js
 
 ### Phase 5: Controllers Migration (Steps 17-22)
 
-**Step 17: Convert authController (Part 1 - setup)**
-Rename src/controllers/authController.js to src/controllers/authController.ts, convert all requires to imports with .js extensions, import Express types (Request, Response, NextFunction), create local type for custom validation result (~10-12 import/type changes).
+**Step 17: Convert authController (Part 1 - setup)** ✅ COMPLETED
+Rename src/controllers/authController.js to src/controllers/authController.ts, convert all requires to imports with .js extensions, import Express types (Request, Response, NextFunction), import IUserDocument from types/models.js, create local type for custom validation result (~10-12 import/type changes).
 
-**Step 18: Convert authController (Part 2 - functions)**
-Type all three controller functions (user_signup_post, user_login_post, user_logout_post) with proper Request, Response, NextFunction parameters, type validation chains with express-validator types, ensure async-handler compatibility (~8-10 function signatures).
+**Step 18: Convert authController (Part 2 - functions & verification)** ✅ COMPLETED
+Type all three controller functions (user_signup, user_login, user_logout) with proper Request, Response, NextFunction parameters, type all callbacks (bcrypt, passport.authenticate, req.login) with Error | null or Error | undefined, type custom validators with string parameters, use unknown for catch blocks, type passport callback info parameter. Verify HTTP status codes (400 for validation errors, 401 for auth failures, 500 for server errors), ensure all error responses include status codes (not default 200), refactor Promise chains to async/await with try/catch for consistency, use bcrypt.hash() promise API directly instead of wrapping in new Promise, wrap all async operations in single try/catch for comprehensive error handling, add console.error() logging with generic user-facing error messages, remove unused parameters or prefix with underscore (~15-20 type additions + verification checks).
 
 **Step 19: Convert postController (Part 1 - setup)**
 Rename src/controllers/postController.js to src/controllers/postController.ts, convert all requires to imports with .js extensions, import Express and Mongoose types (~8-10 import changes).
@@ -88,11 +88,17 @@ Rename src/controllers/postController.js to src/controllers/postController.ts, c
 **Step 20: Convert postController (Part 2 - CRUD functions)**
 Type all five controller functions (posts_list, post_detail, post_create, post_update, post_delete) with proper Express types, add return types, ensure Mongoose queries use IPostDocument types, type validation chains (~10-15 type additions).
 
+**Step 20b: Verify postController error handling and code quality (Part 3)**
+Review all postController functions for: HTTP status code correctness (200/201 success, 400 validation, 404 not found, 500 server errors), ensure all error responses include explicit status codes, verify error handling uses try/catch with unknown type for catch blocks, check for Promise chains that should be refactored to async/await, ensure all async operations have proper error handling with console.error() logging and generic user-facing messages, type all callback parameters properly, remove unused parameters or prefix with underscore. Document findings and fixes in this step upon completion (~verification + any fixes needed).
+
 **Step 21: Convert commentController (Part 1 - setup)**
 Rename src/controllers/commentController.js to src/controllers/commentController.ts, convert all requires to imports with .js extensions (~6-8 import changes).
 
 **Step 22: Convert commentController (Part 2 - CRUD functions)**
 Type all five controller functions (comment_list, comment_detail, comment_create, comment_update, comment_delete) with proper Express types, ensure Mongoose queries use ICommentDocument types, type validation chains (~10-15 type additions).
+
+**Step 22b: Verify commentController error handling and code quality (Part 3)**
+Review all commentController functions for: HTTP status code correctness (200/201 success, 400 validation, 404 not found, 500 server errors), ensure all error responses include explicit status codes, verify error handling uses try/catch with unknown type for catch blocks, check for Promise chains that should be refactored to async/await, ensure all async operations have proper error handling with console.error() logging and generic user-facing messages, type all callback parameters properly, remove unused parameters or prefix with underscore. Document findings and fixes in this step upon completion (~verification + any fixes needed).
 
 ---
 
