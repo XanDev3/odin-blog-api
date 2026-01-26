@@ -136,13 +136,11 @@ export const post_update = [
       
       res
         .status(200)
-        .setHeader("Content-Type", "application/json")
         .json({ message: "Successfully updated post", updatedPost });
     } catch (err: unknown) {
       console.error(err);
       res
         .status(500)
-        .setHeader("Content-Type", "application/json")
         .json({ message: "Failed to update post" });
     }
   }),

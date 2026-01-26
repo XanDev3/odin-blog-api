@@ -91,14 +91,14 @@ Type all five controller functions (posts_list, post_get, post_create, post_upda
 **Step 20b: Verify postController error handling and code quality (Part 3)** ✅ COMPLETED
 Reviewed all postController functions and fixed: Removed unused imports (bcrypt, jwt, passport, IUserDocument), fixed asyncHandler return statements (removed 'return' from res.status() calls), corrected HTTP status codes (201 for post_create success, 500 for server errors, 404 only when resource not found with null checks), added proper error typing (unknown for all catch blocks), changed console.log to console.error for error logging, added null checks for post_get, post_update, post_delete (checking if resource exists before returning), fixed req.user._id access using type assertion (req.user as any)._id, removed unused parameters or prefixed with underscore. All postController functions now have comprehensive error handling with proper status codes and logging (~15+ fixes applied).
 
-**Step 21: Convert commentController (Part 1 - setup)**
-Rename src/controllers/commentController.js to src/controllers/commentController.ts, convert all requires to imports with .js extensions (~6-8 import changes).
+**Step 21: Convert commentController (Part 1 - setup)** ✅ COMPLETED
+Rename src/controllers/commentController.js to src/controllers/commentController.ts, convert all requires to imports with .js extensions, removed unused imports (bcrypt, jwt, passport), import Express types, ICommentDocument type (~6-8 import changes).
 
-**Step 22: Convert commentController (Part 2 - CRUD functions)**
-Type all five controller functions (comment_list, comment_detail, comment_create, comment_update, comment_delete) with proper Express types, ensure Mongoose queries use ICommentDocument types, type validation chains (~10-15 type additions).
+**Step 22: Convert commentController (Part 2 - CRUD functions)** ✅ COMPLETED
+Type all five controller functions (comments_list, comment_get, comment_create, comment_update, comment_delete) with proper Express types (Request, Response, NextFunction), ensure Mongoose queries use ICommentDocument types, type validation chains with ValidationError, prefix unused parameters with underscore (~10-15 type additions).
 
-**Step 22b: Verify commentController error handling and code quality (Part 3)**
-Review all commentController functions for: HTTP status code correctness (200/201 success, 400 validation, 404 not found, 500 server errors), ensure all error responses include explicit status codes, verify error handling uses try/catch with unknown type for catch blocks, check for Promise chains that should be refactored to async/await, ensure all async operations have proper error handling with console.error() logging and generic user-facing messages, type all callback parameters properly, remove unused parameters or prefix with underscore. Document findings and fixes in this step upon completion (~verification + any fixes needed).
+**Step 22b: Verify commentController error handling and code quality (Part 3)** ✅ COMPLETED
+Reviewed all commentController functions and applied fixes: Removed unused imports (Post, bcrypt, jwt, passport), fixed asyncHandler return statements (removed 'return' from res.status() calls), corrected HTTP status codes (201 for comment_create success, 404 for not found with null checks, 500 for server errors), added proper error typing (unknown for all catch blocks), changed console.log to console.error for error logging, added null checks for comment_get, comment_update, comment_delete (checking if resource exists before returning), fixed req.user._id access using type assertion (req.user as any)._id, changed error messages from "Could not..." to "Failed to..." for consistency. All commentController functions now have comprehensive error handling with proper status codes and logging (~15+ improvements applied).
 
 ---
 
