@@ -156,3 +156,4 @@ export const user_logout = (
   // Logout is implemented on the FrontEnd by clearing token (req.logout require express-session middleware which is not currently implemented)
   res.status(200).json({ message: "Logout successful" });
 };
+
