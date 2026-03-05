@@ -102,42 +102,42 @@ Reviewed all commentController functions and applied fixes: Removed unused impor
 
 ---
 
-### Phase 6: Routes Migration (Steps 23-25)
+### Phase 6: Routes Migration (Steps 23-25) ✅ COMPLETED
 
 **Step 23: Convert routes/index** ✅ COMPLETED
 Rename src/routes/index.js to src/routes/index.ts, convert to ES module syntax, type as Router from Express, add .js extensions to imports (~4-5 changes).
 
-**Step 24: Convert routes/api (Part 1 - imports)**
-Rename src/routes/api.js to src/routes/api.ts, convert to ES module syntax, convert all controller imports with .js extensions, import passport with types (~12-15 import changes).
+**Step 24: Convert routes/api (Part 1 - imports)** ✅ COMPLETED
+Renamed src/routes/api.js to src/routes/api.ts. Switched from default imports to named imports for all three controllers (authController, postController, commentController) since all controllers use named exports only. Added .js extensions to all controller imports.
 
-**Step 25: Convert routes/api (Part 2 - route definitions)**
-Type the Router, ensure all route handlers are properly typed via controller imports, type passport middleware calls with authentication strategy names (~8-10 route definitions remain mostly unchanged but inherit types).
-
----
-
-### Phase 7: Application Entry Points (Steps 26-30)
-
-**Step 26: Convert app.ts (Part 1 - imports)**
-Rename src/app.js to src/app.ts, convert all requires to imports with .js extensions, fix require('dotenv').config bug by using import 'dotenv/config', import types from express, mongoose, cors, etc. (~18-20 import conversions).
-
-**Step 27: Convert app.ts (Part 2 - __dirname and passport)**
-Add import { fileURLToPath } from 'url' and import { dirname } from 'path', create const __filename = fileURLToPath(import.meta.url); const __dirname = dirname(__filename);, remove three Passport strategy definitions (now in src/config/passport.ts), import and call configurePassport(passport) (~8-10 changes).
-
-**Step 28: Convert app.ts (Part 3 - typing)**
-Type app as Express, type connectDB function as () => Promise<void>, type error handler middleware parameters (err: Error, req: Request, res: Response, next: NextFunction), ensure all middleware properly typed (~6-8 type annotations).
-
-**Step 29: Convert bin/www (Part 1 - imports and setup)**
-Rename src/bin/www to src/bin/www.ts, convert to ES module imports including app import as import app from '../app.js', import Node.js types (import type { Server } from 'http'), remove shebang or update to #!/usr/bin/env tsx (~8-10 import/setup changes).
-
-**Step 30: Convert bin/www (Part 2 - type functions)**
-Type HTTP server as Server, type normalizePort function with union return type number | string | false, type onError with NodeJS.ErrnoException, type onListening function, add types to all event handlers (~8-10 type annotations).
+**Step 25: Convert routes/api (Part 2 - route definitions)** ✅ COMPLETED
+Updated all route handlers to reference named functions directly (e.g. user_signup, posts_list, comments_list) instead of dot-notation on a default import. Removed conflicting @types/express-validator package — express-validator v7 ships its own types and the @types package broke named imports. tsc --noEmit passes clean.
 
 ---
 
-### Phase 8: Build Verification (Step 31)
+### Phase 7: Application Entry Points (Steps 26-30) ✅ COMPLETED
 
-**Step 31: Update gitignore and verify build**
-Add /dist, /node_modules, *.log, .env to .gitignore if not present, run npm run typecheck to verify compilation with strict: false works, fix any immediate compilation errors (~3-5 .gitignore entries + potential fixes).
+**Step 26: Convert app.ts (Part 1 - imports)** ✅ COMPLETED
+Renamed src/app.js to src/app.ts (already done). Converted all require() to ESM imports with .js extensions. Used import 'dotenv/config' at top. Dropped unused imports: createError, express-session, Schema, bcrypt, LocalStrategy, JwtStrategy, ExtractJwt, User (all only needed by inline passport strategies now living in passport.ts).
+
+**Step 27: Convert app.ts (Part 2 - __dirname and passport)** ✅ COMPLETED
+Added ESM __dirname shim: import { fileURLToPath } from 'url' + const __filename = fileURLToPath(import.meta.url) + const __dirname = path.dirname(__filename). Removed all three inline Passport strategy blocks. Imported and called configurePassport() from ./config/passport.js before passport.initialize().
+
+**Step 28: Convert app.ts (Part 3 - typing)** ✅ COMPLETED
+Typed error handler as ErrorRequestHandler from express (4-parameter signature). Renamed unused next to _next. Installed @types/express-ejs-layouts and @types/swagger-ui-express for missing type declarations. module.exports = app → export default app.
+
+**Step 29: Convert bin/www (Part 1 - imports and setup)** ✅ COMPLETED
+Created src/bin/www.ts (old src/bin/www kept as backup for Phase 10 deletion). Converted all require() to ESM imports with .js extensions. Imported app as default from '../app.js'. Kept shebang line.
+
+**Step 30: Convert bin/www (Part 2 - type functions)** ✅ COMPLETED
+Typed normalizePort as (val: string): number | string | false. Typed onError as (error: NodeJS.ErrnoException): void. Typed onListening as (): void. Added safe null handling on addr?.port. tsc --noEmit passes clean across entire project.
+
+---
+
+### Phase 8: Build Verification (Step 31) ✅ COMPLETED
+
+**Step 31: Update gitignore and verify build** ✅ COMPLETED
+npm run build (tsc) completed with zero errors. dist/ output confirmed: all source files compiled to .js + .js.map pairs — app.js, bin/www.js, config/, controllers/, models/, routes/, types/. Note: dist/app copy.js is also compiled from the backup src/app copy.js; this is cleaned up in Phase 10. Production entry point dist/bin/www.js is present and correct.
 
 ---
 

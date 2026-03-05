@@ -33,26 +33,27 @@
 - Fixed: removed conflicting @types/express-validator (express-validator v7 has its own types)
 - `npm run typecheck` passes clean ✓
 
-## ⏳ Phase 7: Application Entry Points
-- src/app.js → src/app.ts
-  - Convert require() to import
-  - Add ESM __dirname shim:
-    ```ts
-    import { fileURLToPath } from 'url';
-    import { dirname } from 'path';
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    ```
-  - Import configurePassport from ./config/passport.js
-  - Remove inline Passport strategy definitions
-- src/bin/www → src/bin/www.ts
-  - Convert require() to import
-  - Add TypeScript types
+## ✅ Phase 7: Application Entry Points
+- src/app.ts — fully converted
+  - All require() → ESM import with .js extensions
+  - Dropped unused imports: createError, express-session, Schema, bcrypt, LocalStrategy, JwtStrategy, User
+  - ESM __dirname shim: fileURLToPath(import.meta.url) + path.dirname()
+  - Replaced 3 inline Passport strategy blocks with configurePassport() call
+  - Error handler typed as ErrorRequestHandler, unused next → _next
+  - module.exports → export default app
+  - Installed @types/express-ejs-layouts and @types/swagger-ui-express
+- src/bin/www.ts — new file created
+  - All require() → ESM import
+  - normalizePort: (val: string): number | string | false
+  - onError: (error: NodeJS.ErrnoException): void
+  - onListening: (): void
+  - Safe null handling: addr?.port
+- tsc --noEmit passes clean ✓
 
-## ⏳ Phase 8: Build Verification
-- Run `npm run build` (tsc)
-- Verify dist/ output compiles clean
-- Fix any compilation errors
+## ✅ Phase 8: Build Verification
+- `npm run build` (tsc) — zero errors ✓
+- dist/ output confirmed: app.js, bin/www.js, config/, controllers/, models/, routes/, types/ all compiled with .js.map source maps
+- Note: dist/app copy.js present due to backup file in src/ — cleans up in Phase 10
 
 ## ⏳ Phase 9: Strict Mode
 - Enable in tsconfig.json:
